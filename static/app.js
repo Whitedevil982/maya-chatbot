@@ -10,7 +10,7 @@ async function sendMessage() {
     inputField.value = '';
 
     try {
-        const response = await fetch('/chat', {
+        const response = await fetch('https://maya-chatbot.onrender.com/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
