@@ -20,7 +20,6 @@ model = genai.GenerativeModel("gemini-1.5-flash-latest")
 # FastAPI setup
 app = FastAPI()
 
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 # CORS configuration
 app.add_middleware(
@@ -29,6 +28,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
 # Custom responses
 CUSTOM_INPUTS = {
