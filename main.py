@@ -1,5 +1,3 @@
-from fastapi.staticfiles import StaticFiles
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -7,18 +5,8 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
 # Load environment variables
 load_dotenv()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Configure Gemini
 api_key = os.getenv("GOOGLE_API_KEY")
